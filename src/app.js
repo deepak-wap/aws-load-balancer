@@ -27,6 +27,10 @@ app.use(morgan('combined', { stream: { write: msg => logger.http(msg.trim()) } }
 // API routes
 app.use(`/api/${config.APP_VERSION}`, routes);
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK" });
+});
+
 // Handle unknown routes
 app.use((req, res, next) => {
     res.status(404).json({
