@@ -5,7 +5,7 @@ import logger from './src/common/logger/index.js';
 
 import os from "os";
 
-const getLocalIP = () => {
+export const getLocalIP = () => {
   const interfaces = os.networkInterfaces();
   for (const name of Object.keys(interfaces)) {
     for (const net of interfaces[name]) {

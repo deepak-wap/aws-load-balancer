@@ -1,3 +1,4 @@
+import { getLocalIP } from "../../server.js";
 import response from "../common/middleware/response.middleware.js";
 import * as UserService from "./user.service.js"
 
@@ -18,8 +19,9 @@ export const addUser = async (req, res, next) => {
 export const getUsers = async (req, res, next) => {
   try {
     const user = await UserService.getUsers();
+    const ip = getLocalIP();
 
-    res.data = user;
+    res.data = { IP_ADDRESS:ip, user };
     res.statusCode = 200;
     res.message = "User Fetched.";
 
